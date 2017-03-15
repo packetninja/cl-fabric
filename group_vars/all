@@ -230,7 +230,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
     spine02:
         interfaces:
             loopback:
@@ -243,7 +243,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
     spine03:
         interfaces:
             loopback:
@@ -256,7 +256,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
     spine04:
         interfaces:
             loopback:
@@ -269,7 +269,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
     spine05:
         interfaces:
             loopback:
@@ -282,7 +282,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
     spine06:
         interfaces:
             loopback:
@@ -295,7 +295,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
     tier01:
         interfaces:
             loopback:
@@ -308,7 +308,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
     tier02:
         interfaces:
             loopback:
@@ -321,7 +321,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
     tier03:
         interfaces:
             loopback:
@@ -334,7 +334,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+                    interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
 
 #### Servers ####
 
