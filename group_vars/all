@@ -74,7 +74,7 @@ node:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
         VXLAN:
-           LNV_VNI_list: ["100","200"]
+           LNV_VNI_list: ["100"]
     leaf02:
         interfaces:
             loopback:
@@ -88,6 +88,8 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+        VXLAN:
+           LNV_VNI_list: ["100"]
     leaf03:
         interfaces:
             loopback:
@@ -101,6 +103,8 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+        VXLAN:
+           LNV_VNI_list: ["200"]
     leaf04:
         interfaces:
             loopback:
@@ -114,6 +118,8 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+        VXLAN:
+           LNV_VNI_list: ["200"]
     leaf05:
         interfaces:
             loopback:
@@ -127,6 +133,8 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+        VXLAN:
+           LNV_VNI_list: ["100"]
     leaf06:
         interfaces:
             loopback:
@@ -140,6 +148,8 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+        VXLAN:
+           LNV_VNI_list: ["100"]
     leaf07:
         interfaces:
             loopback:
@@ -153,6 +163,8 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+        VXLAN:
+           LNV_VNI_list: ["200"]
     leaf08:
         interfaces:
             loopback:
@@ -166,6 +178,8 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+        VXLAN:
+           LNV_VNI_list: ["200"]
     
     exit01:
         interfaces:
