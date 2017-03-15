@@ -4,16 +4,16 @@
   become: yes
   become_method: sudo
   roles:
-    - ifupdown2
-    - quagga
+    - cumulus_interfaces
+    - cumulus_quagga
    # - evpn
 - hosts: spines
   user: cumulus
   become: yes
   become_method: sudo
   roles:
-    - ifupdown2
-    - quagga
+    - cumulus_interfaces
+    - cumulus_quagga
    # - evpn
 - hosts: servers
   user: vagrant

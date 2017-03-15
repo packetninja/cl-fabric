@@ -10,3 +10,9 @@
 # place.
 - name: restart quagga
   service: name=quagga state=restarted
+
+- name: reload quagga
+  service: name=quagga state=reloaded
+
+- name: enable quagga
+  service: name=quagga state=started enabled=yes

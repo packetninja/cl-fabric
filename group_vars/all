@@ -1,198 +1,403 @@
-# networking
-networks:
-    "172.16.1.0/24":
-        source: "leaf01"
-    "172.16.2.0/24":
-        source: "leaf02"
-interfaces:
+global:
+
+    #Save a local copy of all of the templates rendered on the remote switch
+    save_local: "enable"
+
+    ### NTP section specify ntp servers, timezone, interface to update NTP   ###
+    ntp:
+        #List of NTP servers 0.cumulusnetworks.pool.ntp.org iburst ([0-3]defaults)
+        #servers: ["192.168.100.253","192.168.100.254"]
+        #List of time zones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+        timezone: "America/New_York"
+        #Interface to use eth0(default)
+        listen_int: "eth0"
+
+    ### Proxy section for HTTP, HTTPS, FTP, APT                             ###
+    ### Not apt_proxy overrides http_proxy for all apt operations           ###
+    #http_proxy: "http://192.168.150.254:8080"
+    #https_proxy: "https://192.168.100.254:8443"
+    #ftp_proxy: "ftp://192.168.100.254:8021"
+    #apt_proxy: "http://192.168.100.254"
+
+
+    ### PTM section specify a URL for the topology.dot file                  ###
+    ### If no URL (default is in roles/common/files/topology.dot)            ###
+    #ptm_topology: "http://192.168.0.254/topology.dot"
+
+
+    ### Additional packages to install on the switches                       ###
+    #Packages to install on all nodes.  Cumulus_repo uses the default repo
+    #for the release version
+    #debian_repo usues jessie can add a check for 2.5.x devices if needed
+    #additional_packages:
+        #cumulus_repo: ["apache2","vim"]
+        #debian_repo: ["htop"]
+
+    #remote_syslog_server: "192.168.0.254:514"
+
+    #User to create on the box for non sudo access and Quagga readonly access
+    readonly_user: "readonly"
+    #Default vty password: readonly 'mOmF4Kx3/N4Rs'
+    readonly_password: 'mOmF4Kx3/N4Rs'
+
+    #Quagga passwords use Encrypted value
+    #Default enable password: CumulusLinux! 'EI3shB8./Ozus'
+    #enable_password:
+    #Default password is "readonly"
+    #quagga_readonly_password:
+
+    #Default /var/log/quagga/quagga.log
+    #log_file:
+
+    route_maps:
+        LOOPBACK:
+            - "route-map LOOPBACK permit 100"
+            - "  match interface lo"
+
+    prefix_lists:
+        global_out_list:
+            - "ip 10 permit 5.6.7.0/24 le 32"
+            - "ip 100 deny any"
+
+node:
     leaf01:
-        loopback: "10.0.0.11"
-        asn: 65011
-        neighbors:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.11/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65011
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp49","swp51","swp52"]
     leaf02:
-        loopback: "10.0.0.12"
-        asn: 65012
-        neighbors:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.12/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65012
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp49","swp51","swp52"]
     leaf03:
-        loopback: "10.0.0.13"
-        asn: 65013
-        neighbors:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.13/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65013
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp49","swp51","swp52"]
     leaf04:
-        loopback: "10.0.0.14"
-        asn: 65014
-        neighbors:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.14/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65014
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp49","swp51","swp52"]
     leaf05:
-        loopback: "10.0.0.15"
-        asn: 65015
-        neighbors:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.15/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65015
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp49","swp51","swp52"]
     leaf06:
-        loopback: "10.0.0.16"
-        asn: 65016
-        neighbors:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.16/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65016
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp49","swp51","swp52"]
     leaf07:
-        loopback: "10.0.0.17"
-        asn: 65017
-        neighbors:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.17/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65017
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp49","swp51","swp52"]
     leaf08:
-        loopback: "10.0.0.18"
-        asn: 65018
-        neighbors:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.18/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65018
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp49","swp51","swp52"]
+    
     exit01:
-        loopback: "10.0.0.41"
-        asn: 65041
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.41/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65041
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3","swp6","swp7"]
     exit02:
-        loopback: "10.0.0.42"
-        asn: 65042
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.42/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65042
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3","swp6","swp7"]
     rtr01:
-        loopback: "10.0.0.51"
-        asn: 65051
-        neighbors:
-            swp1:
-            swp2:
+        interfaces:
+            loopback:
+                ipv4: "1.1.1.1/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 100
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2"]
     rtr02:
-        loopback: "10.0.0.52"
-        asn: 65052
-        neighbors:
-            swp1:
-            swp2:
+        interfaces:
+            loopback:
+                ipv4: "1.1.1.2/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 100
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2"]
+
     spine01:
-        loopback: "10.0.0.21"
-        asn: 65020
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.21/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65020
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
     spine02:
-        loopback: "10.0.0.22"
-        asn: 65020
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.22/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65020
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
     spine03:
-        loopback: "10.0.0.23"
-        asn: 65020
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.23/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65020
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
     spine04:
-        loopback: "10.0.0.24"
-        asn: 65021
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.24/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65021
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
     spine05:
-        loopback: "10.0.0.25"
-        asn: 65021
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.25/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65021
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
     spine06:
-        loopback: "10.0.0.26"
-        asn: 65021
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp49:
-            swp50:
-            swp51:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.26/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65021
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
     tier01:
-        loopback: "10.0.0.31"
-        asn: 65030
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp5:
-            swp6:
-            swp7:
-            swp8:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.31/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65030
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
     tier02:
-        loopback: "10.0.0.32"
-        asn: 65030
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp5:
-            swp6:
-            swp7:
-            swp8:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.32/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65030
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
     tier03:
-        loopback: "10.0.0.33"
-        asn: 65030
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
-            swp5:
-            swp6:
-            swp7:
-            swp8:
+        interfaces:
+            loopback:
+                ipv4: "10.0.0.33/32"
+            eth0:
+                vrfmgmt: "enable"
+                dhcp: "enable"
+        BGP:
+            asn: 65030
+            redistribute_connected_ipv4: "LOOPBACK"
+            peer_groups:
+                fabric:
+                    interfaces: ["swp1","swp2","swp3,"swp4","swp49","swp50","swp51"]
+
+#### Servers ####
+
     server01:
         bonds:
             uplink:
                 members: ["eth1","eth2"]
                 ipv4: "192.168.10.101/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
+    server02:
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.10.102/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
+    server03:
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.10.101/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
+    server03:
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.20.101/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
+    server04:
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.20.102/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
+    server05:
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.10.103/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
+    server06:
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.10.104/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
+    server07:
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.20.103/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
+    server08:
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.20.104/24"
                 postup:
                       - "ip route add default via 192.168.10.1"
