@@ -346,7 +346,7 @@ iface bridge.{{vlan_int[4:]}}
 {% endif -%}
 
 {### Create VXLAN interfaces ###}
-{% if node.VXLAN is defined %}
+{% if VXLAN is defined %}
 {%   if node.VXLAN.LNV_VNI_list is defined %}
 {%     for vni_id in node.VXLAN.LNV_VNI_list %}
 auto vni-10{{vni_id}}
