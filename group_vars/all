@@ -1,0 +1,203 @@
+# networking
+networks:
+    "172.16.1.0/24":
+        source: "leaf01"
+    "172.16.2.0/24":
+        source: "leaf02"
+interfaces:
+    leaf01:
+        loopback: "10.0.0.11"
+        asn: 65011
+        neighbors:
+            swp49:
+            swp50:
+            swp51:
+    leaf02:
+        loopback: "10.0.0.12"
+        asn: 65012
+        neighbors:
+            swp49:
+            swp50:
+            swp51:
+    leaf03:
+        loopback: "10.0.0.13"
+        asn: 65013
+        neighbors:
+            swp49:
+            swp50:
+            swp51:
+    leaf04:
+        loopback: "10.0.0.14"
+        asn: 65014
+        neighbors:
+            swp49:
+            swp50:
+            swp51:
+    leaf05:
+        loopback: "10.0.0.15"
+        asn: 65015
+        neighbors:
+            swp49:
+            swp50:
+            swp51:
+    leaf06:
+        loopback: "10.0.0.16"
+        asn: 65016
+        neighbors:
+            swp49:
+            swp50:
+            swp51:
+    leaf07:
+        loopback: "10.0.0.17"
+        asn: 65017
+        neighbors:
+            swp49:
+            swp50:
+            swp51:
+    leaf08:
+        loopback: "10.0.0.18"
+        asn: 65018
+        neighbors:
+            swp49:
+            swp50:
+            swp51:
+    exit01:
+        loopback: "10.0.0.41"
+        asn: 65041
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+    exit02:
+        loopback: "10.0.0.42"
+        asn: 65042
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+    rtr01:
+        loopback: "10.0.0.51"
+        asn: 65051
+        neighbors:
+            swp1:
+            swp2:
+    rtr02:
+        loopback: "10.0.0.52"
+        asn: 65052
+        neighbors:
+            swp1:
+            swp2:
+    spine01:
+        loopback: "10.0.0.21"
+        asn: 65020
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp49:
+            swp50:
+            swp51:
+    spine02:
+        loopback: "10.0.0.22"
+        asn: 65020
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp49:
+            swp50:
+            swp51:
+    spine03:
+        loopback: "10.0.0.23"
+        asn: 65020
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp49:
+            swp50:
+            swp51:
+    spine04:
+        loopback: "10.0.0.24"
+        asn: 65021
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp49:
+            swp50:
+            swp51:
+    spine05:
+        loopback: "10.0.0.25"
+        asn: 65021
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp49:
+            swp50:
+            swp51:
+    spine06:
+        loopback: "10.0.0.26"
+        asn: 65021
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp49:
+            swp50:
+            swp51:
+    tier01:
+        loopback: "10.0.0.31"
+        asn: 65030
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp5:
+            swp6:
+            swp7:
+            swp8:
+    tier02:
+        loopback: "10.0.0.32"
+        asn: 65030
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp5:
+            swp6:
+            swp7:
+            swp8:
+    tier03:
+        loopback: "10.0.0.33"
+        asn: 65030
+        neighbors:
+            swp1:
+            swp2:
+            swp3:
+            swp4:
+            swp5:
+            swp6:
+            swp7:
+            swp8:
+    server01:
+        neighbors:
+            eth1:
+                ip: "172.16.1.101"
+                mask: "255.255.255.0"
+                gateway: "172.16.1.1"
+    server02:
+        neighbors:
+            eth2:
+                ip: "172.16.2.101"
+                mask: "255.255.255.0"
+                gateway: "172.16.2.1"
