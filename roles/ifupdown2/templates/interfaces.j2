@@ -2,19 +2,23 @@
 # /etc/network/interfaces template for switches ({{ansible_hostname}})
 # Created by Ansible
 
+auto eth0
+iface eth0 inet dhcp
+ vrf mgmt
+
+auto mgmt
+iface mgmt
+  address 127.0.0.1/8
+  vrf-table auto
+
 auto lo
 iface lo inet loopback
   address {{ intvars.loopback }}/32
-
-auto eth0
-iface eth0 inet dhcp
-
 
 {% for iface in intvars.neighbors %}
 auto {{ iface }}
 iface {{ iface }}
 {% endfor %}
-
 
 {% for network in intvars.networks | default(()) %}
 {% for port in intvars.networks[network].ports %}
