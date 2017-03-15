@@ -67,12 +67,51 @@ node:
             eth0:
                 vrfmgmt: "enable"
                 dhcp: "enable"
+
+        MLAG:
+            peerlink_name: "peerlink"
+            peerlink_sub_int: "4094"
+            members: ["swp20","swp21"]
+            sysmac: "44:39:39:FF:40:94"
+            mtu: 9216
+            peerlink_ip: "169.254.255.1"
+            peerlink_peer_ip: "169.254.255.2"
+            backup_peer: "leaf01"
+            description: "Leaf01-Leaf02 MLAG peerlink"
+        bonds:
+            server01:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "100"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server01 MLAG"
+                members: ["swp1"]
+                clagid: 1
+                mtu: 9216
+                LACP_bypass: "enable"
+
+            server02:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "100"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server02 MLAG"
+                members: ["swp2"]
+                clagid: 2
+                mtu: 9216
+                LACP_bypass: "enable"
+        VLANS:
+            default_vids: "100"
+            default_pvid: "1"
+            STP_priority: "8192"
+            members: ["server01","server02","regex vni.*"]    
         BGP:
             asn: 65011
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
     leaf02:
