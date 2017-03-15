@@ -12,6 +12,7 @@ iface eth0 inet dhcp
     post-up ip route add default via 192.168.0.1
 
 {### Handle the Loopback and all L3 interfaces ###}
+{% if interfaces is defined %}
 {% for interface in intvars -%}
 {% if interface == "loopback" -%}
 auto lo
@@ -37,6 +38,7 @@ iface {{interface}} inet manual
 {% endif %}
 {% endfor %}
 
+
 {### Build the bonds and member interfaces ###}
 {% if bonds is defined %}
 {% for bond in bonds -%}
@@ -51,6 +53,7 @@ iface {{mem_int}} inet manual
   mtu {{ bonds[bond].mtu }}
 {% endif %}
 {% endfor %}
+{% endif -%}
 
 
 {### Create the actual bond interface ###}
