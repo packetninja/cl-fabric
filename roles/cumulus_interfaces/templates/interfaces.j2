@@ -301,6 +301,7 @@ auto bridge
 iface bridge
   bridge-vlan-aware yes
   bridge-ports {% for port in vlans.members %}{% if port == "BONDS" %}{% for bond in bonds %}{{bond}} {% endfor %} {% else %}{{port}} {% endif %}{% endfor %}{% if MLAGvars is defined %} {{MLAGvars.peerlink_name}} {% endif %}
+
 {%   if vlans.default_vids is defined %}
   bridge-vids {{vlans.default_vids}}
 {%   endif %}
