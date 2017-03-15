@@ -37,7 +37,7 @@ iface {{interface}} inet manual
   mtu {{ intvars[interface].mtu }}
 {% endif %}
 {% endfor %}
-
+{% endif -%}
 
 {### Build the bonds and member interfaces ###}
 {% if bonds is defined %}
@@ -53,7 +53,6 @@ iface {{mem_int}} inet manual
   mtu {{ bonds[bond].mtu }}
 {% endif %}
 {% endfor %}
-{% endif -%}
 
 
 {### Create the actual bond interface ###}
