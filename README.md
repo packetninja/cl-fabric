@@ -78,3 +78,4 @@ The top-level playbook is the entry point for ansible. You can make multiple top
 Expanding the Network
 ---------------------
 To add a new device, add the new hostnames to the `hosts` file and add the appropriate variables to connect them with the rest of the network. In a well-written playbook, templates and tasks should not need to be changed when new devices are added to the infrastructure. If you are using the reference topology, you can run `vagrant up leaf03 server03` to add a third host and tor to the infrastructure.
+# cl-fabric
