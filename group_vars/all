@@ -73,6 +73,8 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+        VXLAN:
+           LNV_VNI_list: ["100","200"]
     leaf02:
         interfaces:
             loopback:
@@ -356,23 +358,16 @@ node:
         bonds:
             uplink:
                 members: ["eth1","eth2"]
-                ipv4: "192.168.10.101/24"
-                postup:
-                      - "ip route add default via 192.168.10.1"
-    server03:
-        bonds:
-            uplink:
-                members: ["eth1","eth2"]
                 ipv4: "192.168.20.101/24"
                 postup:
-                      - "ip route add default via 192.168.10.1"
+                      - "ip route add default via 192.168.20.1"
     server04:
         bonds:
             uplink:
                 members: ["eth1","eth2"]
                 ipv4: "192.168.20.102/24"
                 postup:
-                      - "ip route add default via 192.168.10.1"
+                      - "ip route add default via 192.168.20.1"
     server05:
         bonds:
             uplink:
@@ -393,11 +388,11 @@ node:
                 members: ["eth1","eth2"]
                 ipv4: "192.168.20.103/24"
                 postup:
-                      - "ip route add default via 192.168.10.1"
+                      - "ip route add default via 192.168.20.1"
     server08:
         bonds:
             uplink:
                 members: ["eth1","eth2"]
                 ipv4: "192.168.20.104/24"
                 postup:
-                      - "ip route add default via 192.168.10.1"
+                      - "ip route add default via 192.168.20.1"
