@@ -12,7 +12,7 @@ iface eth0 inet dhcp
     post-up ip route add default via 192.168.0.1
 
 {### Handle the Loopback and all L3 interfaces ###}
-{% if interfaces is defined %}
+{% if interfaces is defined -%}
 {% for interface in intvars -%}
 {% if interface == "loopback" -%}
 auto lo
