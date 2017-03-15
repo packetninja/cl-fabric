@@ -1,8 +1,16 @@
 [leafs]
 leaf01
 leaf02
+leaf03
+leaf04
+leaf05
+leaf06
+leaf07
+leaf08
 exit01
 exit02
+rtr01
+rtr02
 
 [spines]
 spine01
@@ -18,3 +26,9 @@ tier03
 [servers]
 server01
 server02
+server03
+server04
+server05
+server06
+server07
+server08

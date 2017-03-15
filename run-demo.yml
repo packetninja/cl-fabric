@@ -6,7 +6,7 @@
   roles:
     - ifupdown2
     - quagga
-    - evpn
+   # - evpn
 - hosts: spines
   user: cumulus
   become: yes
@@ -14,9 +14,11 @@
   roles:
     - ifupdown2
     - quagga
-    - evpn
+   # - evpn
 - hosts: servers
-  user: cumulus
+  user: vagrant
+  vars:
+    ansible_ssh_pass: vagrant 
   become: yes
   become_method: sudo
   roles:

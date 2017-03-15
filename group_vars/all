@@ -190,14 +190,9 @@ interfaces:
             swp7:
             swp8:
     server01:
-        neighbors:
-            eth1:
-                ip: "172.16.1.101"
-                mask: "255.255.255.0"
-                gateway: "172.16.1.1"
-    server02:
-        neighbors:
-            eth2:
-                ip: "172.16.2.101"
-                mask: "255.255.255.0"
-                gateway: "172.16.2.1"
+        bonds:
+            uplink:
+                members: ["eth1","eth2"]
+                ipv4: "192.168.10.101/24"
+                postup:
+                      - "ip route add default via 192.168.10.1"
