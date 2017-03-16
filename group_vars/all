@@ -157,7 +157,7 @@ node:
             default_vids: "100"
             default_pvid: "1"
             STP_priority: "8192"
-            members: ["server03","server04","regex vni.*"]    
+            members: ["server01","server02","regex vni.*"]    
         BGP:
             asn: 65012
             redistribute_connected_ipv4: "LOOPBACK"
@@ -312,7 +312,7 @@ node:
             default_vids: "100"
             default_pvid: "1"
             STP_priority: "8192"
-            members: ["server01","server02","regex vni.*"]    
+            members: ["server05","server06","regex vni.*"]    
         BGP:
             asn: 65015
             redistribute_connected_ipv4: "LOOPBACK"
@@ -364,7 +364,7 @@ node:
             default_vids: "100"
             default_pvid: "1"
             STP_priority: "8192"
-            members: ["server01","server02","regex vni.*"]    
+            members: ["server05","server06","regex vni.*"]    
         BGP:
             asn: 65016
             redistribute_connected_ipv4: "LOOPBACK"
