@@ -57,7 +57,7 @@ iface {{mem_int}} inet manual
 
 {### Create the actual bond interface ###}
 auto {{bond}}
-iface {{bond}} inet manual
+iface {{bond}} inet static 
     #bond-slaves {{bonds[bond].members | join(" ")}}
     bond-slaves none
     bond-mode 802.3ad
