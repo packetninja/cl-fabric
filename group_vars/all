@@ -115,6 +115,7 @@ node:
 
         VXLAN:
            LNV_VNI_list: ["100"]
+           vxlan_anycast_ip: "10.100.100.1"
     leaf02:
         interfaces:
             loopback:
@@ -168,6 +169,7 @@ node:
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
+           vxlan_anycast_ip: "10.100.100.2"
     leaf03:
         interfaces:
             loopback:
@@ -220,6 +222,7 @@ node:
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
+           vxlan_anycast_ip: "10.100.100.3"
     leaf04:
         interfaces:
             loopback:
@@ -273,6 +276,7 @@ node:
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
+           vxlan_anycast_ip: "10.100.100.4"
     leaf05:
         interfaces:
             loopback:
@@ -326,6 +330,7 @@ node:
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
+           vxlan_anycast_ip: "10.100.100.2"
     leaf06:
         interfaces:
             loopback:
@@ -379,6 +384,7 @@ node:
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
+           vxlan_anycast_ip: "10.100.100.6"
     leaf07:
         interfaces:
             loopback:
@@ -431,6 +437,7 @@ node:
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
+           vxlan_anycast_ip: "10.100.100.7"
     leaf08:
         interfaces:
             loopback:
@@ -483,6 +490,7 @@ node:
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
+           vxlan_anycast_ip: "10.100.100.8"
     
     exit01:
         interfaces:
