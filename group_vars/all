@@ -110,7 +110,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp49","swp51","swp52"]
+                    interfaces: ["swp49","swp50","swp51"]
                     evpn: "enable"
 
         VXLAN:
@@ -165,7 +165,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp49","swp51","swp52"]
+                    interfaces: ["swp49","swp50","swp51"]
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
@@ -218,7 +218,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp49","swp51","swp52"]
+                    interfaces: ["swp49","swp50","swp51"]
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
@@ -272,7 +272,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp49","swp51","swp52"]
+                    interfaces: ["swp49","swp50","swp51"]
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
@@ -326,7 +326,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp49","swp51","swp52"]
+                    interfaces: ["swp49","swp50","swp51"]
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
@@ -380,7 +380,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp49","swp51","swp52"]
+                    interfaces: ["swp49","swp50","swp51"]
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
@@ -433,7 +433,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp49","swp51","swp52"]
+                    interfaces: ["swp49","swp50","swp51"]
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
@@ -486,7 +486,7 @@ node:
             redistribute_connected_ipv4: "LOOPBACK"
             peer_groups:
                 fabric:
-                    interfaces: ["swp49","swp51","swp52"]
+                    interfaces: ["swp49","swp50","swp51"]
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
