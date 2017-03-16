@@ -70,6 +70,15 @@ iface {{bond}} inet manual
     mtu {{ bonds[bond].mtu }}
 {% endif %}
 
+{% if bonds[bond].ipv4 is defined %}
+    address {{ bonds[bond].ipv4 }}
+{% endif %}
+{% if bonds[bond].postup is defined %}
+{% for postup in bonds[bond].postup %}
+    post-up {{ postup }}
+{% endfor %}
+{% endif %}
+
 {% if svi is defined %}
 {% for vlan_int in svi %}
 auto {{bond}}.{{vlan_int[4:]}}
