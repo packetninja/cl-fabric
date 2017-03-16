@@ -33,9 +33,6 @@
 auto lo
 iface lo inet loopback
 {%     if node.LNV is defined -%}
-{%   if node.LNV.service_node is defined %}
-  address {{node.LNV.service_node.anycast}}/32
-{% endif -%}
 {%       if node.LNV.service_node is defined %}
   address {{node.LNV.service_node.anycast}}/32
 {%       endif -%}
@@ -47,6 +44,11 @@ iface lo inet loopback
 {%         endif -%}
 {%       endif -%}
 {%     endif -%}
+{% if node.VXLAN is defined %}
+{%   if node.VXLAN.vxlan_anycast_ip is defined %}
+  clagd-vxlan-anycast-ip {{node.VXLAN.vxlan_anycast_ip}}
+{%    endif -%}
+{% endif -%}
 {%   else %}
 auto {{interface}}
 {%     if intvars[interface].dhcp is defined and intvars[interface].dhcp == "enable" %}
