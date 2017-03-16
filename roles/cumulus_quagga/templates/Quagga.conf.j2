@@ -194,10 +194,6 @@ router bgp {{ bgpvars.asn }}
   advertise-all-vni
 {% endif %}
 {% endfor %}
-{%     if bgpvars.peer_groups is defined %}
-{%         for neighbor in bgpvars.peer_groups.fabric.interfaces %}
-  neighbor {{ neighbor }} activate 
-{%     endfor %}
 {%       endif %}
 {%   endif %}
 {% endif %}
