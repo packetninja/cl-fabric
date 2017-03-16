@@ -330,7 +330,7 @@ node:
                     evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
-           vxlan_anycast_ip: "10.100.100.2"
+           vxlan_anycast_ip: "10.100.100.5"
     leaf06:
         interfaces:
             loopback:
