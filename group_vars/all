@@ -111,6 +111,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
 
         VXLAN:
            LNV_VNI_list: ["100"]
@@ -164,6 +165,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
     leaf03:
@@ -215,6 +217,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
     leaf04:
@@ -267,6 +270,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
     leaf05:
@@ -319,6 +323,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
     leaf06:
@@ -371,6 +376,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["100"]
     leaf07:
@@ -422,6 +428,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
     leaf08:
@@ -473,6 +480,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
+                    evpn: "enable"
         VXLAN:
            LNV_VNI_list: ["200"]
     
@@ -489,6 +497,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp6","swp7"]
+                    evpn: "enable"
     exit02:
         interfaces:
             loopback:
@@ -502,6 +511,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp6","swp7"]
+                    evpn: "enable"
     rtr01:
         interfaces:
             loopback:
@@ -515,6 +525,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2"]
+                    evpn: "enable"
     rtr02:
         interfaces:
             loopback:
@@ -528,6 +539,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2"]
+                    evpn: "enable"
 
     spine01:
         interfaces:
@@ -542,6 +554,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
     spine02:
         interfaces:
             loopback:
@@ -555,6 +568,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
     spine03:
         interfaces:
             loopback:
@@ -568,6 +582,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
     spine04:
         interfaces:
             loopback:
@@ -581,6 +596,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
     spine05:
         interfaces:
             loopback:
@@ -594,6 +610,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
     spine06:
         interfaces:
             loopback:
@@ -607,6 +624,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
     tier01:
         interfaces:
             loopback:
@@ -620,6 +638,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
     tier02:
         interfaces:
             loopback:
@@ -633,6 +652,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
     tier03:
         interfaces:
             loopback:
@@ -646,6 +666,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp1","swp2","swp3","swp4","swp49","swp50","swp51"]
+                    evpn: "enable"
 
 #### Servers ####
 
