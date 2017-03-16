@@ -33,6 +33,9 @@
 auto lo
 iface lo inet loopback
 {%     if node.LNV is defined -%}
+{%   if node.LNV.service_node is defined %}
+  address {{node.LNV.service_node.anycast}}/32
+{% endif -%}
 {%       if node.LNV.service_node is defined %}
   address {{node.LNV.service_node.anycast}}/32
 {%       endif -%}
