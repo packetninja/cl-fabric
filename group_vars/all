@@ -111,7 +111,7 @@ node:
             peer_groups:
                 fabric:
                     interfaces: ["swp49","swp51","swp52"]
-                    evpn: "enable"
+
         VXLAN:
            LNV_VNI_list: ["100"]
     leaf02:
@@ -121,6 +121,43 @@ node:
             eth0:
                 vrfmgmt: "enable"
                 dhcp: "enable"
+        MLAG:
+            peerlink_name: "peerlink"
+            peerlink_sub_int: "4094"
+            members: ["swp20","swp21"]
+            sysmac: "44:39:39:FF:40:94"
+            mtu: 9216
+            peerlink_ip: "169.254.255.2"
+            peerlink_peer_ip: "169.254.255.1"
+            backup_peer: "leaf02"
+            description: "Leaf01-Leaf02 MLAG peerlink"
+        bonds:
+            server01:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "100"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server01 MLAG"
+                members: ["swp1"]
+                clagid: 1
+                mtu: 9216
+                LACP_bypass: "enable"
+
+            server02:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "100"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server02 MLAG"
+                members: ["swp2"]
+                clagid: 2
+                mtu: 9216
+                LACP_bypass: "enable"
+        VLANS:
+            default_vids: "100"
+            default_pvid: "1"
+            STP_priority: "8192"
+            members: ["server03","server04","regex vni.*"]    
         BGP:
             asn: 65012
             redistribute_connected_ipv4: "LOOPBACK"
@@ -136,6 +173,42 @@ node:
             eth0:
                 vrfmgmt: "enable"
                 dhcp: "enable"
+        MLAG:
+            peerlink_name: "peerlink"
+            peerlink_sub_int: "4094"
+            members: ["swp20","swp21"]
+            sysmac: "44:39:39:FF:40:94"
+            mtu: 9216
+            peerlink_ip: "169.254.255.1"
+            peerlink_peer_ip: "169.254.255.2"
+            backup_peer: "leaf04"
+            description: "Leaf03-Leaf04 MLAG peerlink"
+        bonds:
+            server03:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "200"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server03 MLAG"
+                members: ["swp1"]
+                clagid: 1
+                mtu: 9216
+                LACP_bypass: "enable"
+            server04:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "200"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server04 MLAG"
+                members: ["swp2"]
+                clagid: 2
+                mtu: 9216
+                LACP_bypass: "enable"
+        VLANS:
+            default_vids: "200"
+            default_pvid: "1"
+            STP_priority: "8192"
+            members: ["server03","server04","regex vni.*"]    
         BGP:
             asn: 65013
             redistribute_connected_ipv4: "LOOPBACK"
@@ -151,6 +224,43 @@ node:
             eth0:
                 vrfmgmt: "enable"
                 dhcp: "enable"
+        MLAG:
+            peerlink_name: "peerlink"
+            peerlink_sub_int: "4094"
+            members: ["swp20","swp21"]
+            sysmac: "44:39:39:FF:40:94"
+            mtu: 9216
+            peerlink_ip: "169.254.255.2"
+            peerlink_peer_ip: "169.254.255.1"
+            backup_peer: "leaf03"
+            description: "Leaf03-Leaf04 MLAG peerlink"
+        bonds:
+            server03:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "200"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server03 MLAG"
+                members: ["swp1"]
+                clagid: 1
+                mtu: 9216
+                LACP_bypass: "enable"
+
+            server04:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "200"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server04 MLAG"
+                members: ["swp2"]
+                clagid: 2
+                mtu: 9216
+                LACP_bypass: "enable"
+        VLANS:
+            default_vids: "200"
+            default_pvid: "1"
+            STP_priority: "8192"
+            members: ["server03","server04","regex vni.*"]    
         BGP:
             asn: 65014
             redistribute_connected_ipv4: "LOOPBACK"
@@ -166,6 +276,43 @@ node:
             eth0:
                 vrfmgmt: "enable"
                 dhcp: "enable"
+        MLAG:
+            peerlink_name: "peerlink"
+            peerlink_sub_int: "4094"
+            members: ["swp20","swp21"]
+            sysmac: "44:39:39:FF:40:94"
+            mtu: 9216
+            peerlink_ip: "169.254.255.1"
+            peerlink_peer_ip: "169.254.255.2"
+            backup_peer: "leaf06"
+            description: "Leaf05-Leaf06 MLAG peerlink"
+        bonds:
+            server05:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "100"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server05 MLAG"
+                members: ["swp1"]
+                clagid: 1
+                mtu: 9216
+                LACP_bypass: "enable"
+
+            server06:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "100"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server06 MLAG"
+                members: ["swp2"]
+                clagid: 2
+                mtu: 9216
+                LACP_bypass: "enable"
+        VLANS:
+            default_vids: "100"
+            default_pvid: "1"
+            STP_priority: "8192"
+            members: ["server01","server02","regex vni.*"]    
         BGP:
             asn: 65015
             redistribute_connected_ipv4: "LOOPBACK"
@@ -181,6 +328,43 @@ node:
             eth0:
                 vrfmgmt: "enable"
                 dhcp: "enable"
+        MLAG:
+            peerlink_name: "peerlink"
+            peerlink_sub_int: "4094"
+            members: ["swp20","swp21"]
+            sysmac: "44:39:39:FF:40:94"
+            mtu: 9216
+            peerlink_ip: "169.254.255.2"
+            peerlink_peer_ip: "169.254.255.1"
+            backup_peer: "leaf05"
+            description: "Leaf05-Leaf06 MLAG peerlink"
+        bonds:
+            server05:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "100"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server05 MLAG"
+                members: ["swp1"]
+                clagid: 1
+                mtu: 9216
+                LACP_bypass: "enable"
+
+            server06:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "100"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server06 MLAG"
+                members: ["swp2"]
+                clagid: 2
+                mtu: 9216
+                LACP_bypass: "enable"
+        VLANS:
+            default_vids: "100"
+            default_pvid: "1"
+            STP_priority: "8192"
+            members: ["server01","server02","regex vni.*"]    
         BGP:
             asn: 65016
             redistribute_connected_ipv4: "LOOPBACK"
@@ -196,6 +380,42 @@ node:
             eth0:
                 vrfmgmt: "enable"
                 dhcp: "enable"
+        MLAG:
+            peerlink_name: "peerlink"
+            peerlink_sub_int: "4094"
+            members: ["swp20","swp21"]
+            sysmac: "44:39:39:FF:40:94"
+            mtu: 9216
+            peerlink_ip: "169.254.255.1"
+            peerlink_peer_ip: "169.254.255.2"
+            backup_peer: "leaf08"
+            description: "Leaf07-Leaf08 MLAG peerlink"
+        bonds:
+            server07:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "200"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server07 MLAG"
+                members: ["swp1"]
+                clagid: 1
+                mtu: 9216
+                LACP_bypass: "enable"
+            server08:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "200"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server08 MLAG"
+                members: ["swp2"]
+                clagid: 2
+                mtu: 9216
+                LACP_bypass: "enable"
+        VLANS:
+            default_vids: "200"
+            default_pvid: "1"
+            STP_priority: "8192"
+            members: ["server07","server08","regex vni.*"]    
         BGP:
             asn: 65017
             redistribute_connected_ipv4: "LOOPBACK"
@@ -211,6 +431,42 @@ node:
             eth0:
                 vrfmgmt: "enable"
                 dhcp: "enable"
+        MLAG:
+            peerlink_name: "peerlink"
+            peerlink_sub_int: "4094"
+            members: ["swp20","swp21"]
+            sysmac: "44:39:39:FF:40:94"
+            mtu: 9216
+            peerlink_ip: "169.254.255.2"
+            peerlink_peer_ip: "169.254.255.1"
+            backup_peer: "leaf07"
+            description: "Leaf07-Leaf08 MLAG peerlink"
+        bonds:
+            server07:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "200"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server07 MLAG"
+                members: ["swp1"]
+                clagid: 1
+                mtu: 9216
+                LACP_bypass: "enable"
+            server08:
+                mstpctl-portadminedge: "enable"
+                bridge_access: "200"
+                stp_priority: "10"
+                bpdugaurd: "enable"
+                alias: "Server08 MLAG"
+                members: ["swp2"]
+                clagid: 2
+                mtu: 9216
+                LACP_bypass: "enable"
+        VLANS:
+            default_vids: "200"
+            default_pvid: "1"
+            STP_priority: "8192"
+            members: ["server07","server08","regex vni.*"]    
         BGP:
             asn: 65018
             redistribute_connected_ipv4: "LOOPBACK"
