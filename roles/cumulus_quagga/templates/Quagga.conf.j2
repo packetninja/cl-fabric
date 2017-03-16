@@ -195,10 +195,8 @@ router bgp {{ bgpvars.asn }}
 {% endif %}
 {% endfor %}
 {%     if bgpvars.peer_groups is defined %}
-{%       for groupname in bgpvars.peer_groups %}
-{%         for neighbor in bgpvars.peer_groups[groupname].interfaces %}
+{%         for neighbor in bgpvars.peer_groups.fabric.interfaces %}
   neighbor {{ neighbor }} activate 
-{%         endfor %}
 {%     endfor %}
 {%       endif %}
 {%   endif %}
