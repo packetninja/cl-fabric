@@ -186,6 +186,14 @@ router bgp {{ bgpvars.asn }}
 {%       endif -%}
 {%     endif -%}
  exit-address-family
+!
+ address-family evpn
+{% for groupname in bgpvars.peer_groups %}
+{% if bgpvars.peer_groups[groupname].evpn is defined and bgpvars.peer_groups[groupname].evpn == "enable" %}
+  neighbor {{groupname}} activate
+  advertise-all-vni
+{% endif %}
+{% endfor %}
 {%   endif %}
 {% endif %}
 {#######  END BGP configuration #######}
