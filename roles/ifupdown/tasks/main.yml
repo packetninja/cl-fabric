@@ -1,7 +1,3 @@
-- name: Configure interfaces
-  template: src=interfaces.j2 dest=/etc/network/interfaces
-  notify: reboot server
-
 - name: Update repositories cache and install depends
   apt: name={{ item }} update_cache=yes
   with_items:
@@ -11,9 +7,12 @@
    - vlan
    - vim
 
+- name: Configure interfaces
+  template: src=interfaces.j2 dest=/etc/network/interfaces
+  notify: reboot server
+
 - name: Setup bonding module in Kernel
   command: modprobe bonding
 
 - name: Setup .1q module in Kernel
   command: modprobe 8021q
-
