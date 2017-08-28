@@ -1,34 +1,20 @@
+#-------------------------------------------------------------------------------
+#
+# switch management groups
+#
+
+[spines]
+spine01
+spine02
+
 [leafs]
 leaf01
 leaf02
 leaf03
 leaf04
-leaf05
-leaf06
-leaf07
-leaf08
-exit01
-exit02
-rtr01
-rtr02
-
-[spines]
-spine01
-spine02
-spine03
-spine04
-spine05
-spine06
-tier01
-tier02
-tier03
 
 [servers]
-server01
-server02
-server03
-server04
-server05
-server06
-server07
-server08
+server01 ansible_password=vagrant
+server02 ansible_password=vagrant
+server03 ansible_password=vagrant
+server04 ansible_password=vagrant

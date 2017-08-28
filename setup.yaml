@@ -1,0 +1,20 @@
+---
+- hosts: spines
+  roles:
+  - l3-evpn-spine
+
+- hosts: leafs 
+  roles:
+  - l3-evpn-leaf
+
+- hosts: servers 
+  roles:
+  - simple-server
+  become: yes
+  remote_user: vagrant
+
+  
+#- hosts: servers
+#  roles:
+#  - rack-server
+...
