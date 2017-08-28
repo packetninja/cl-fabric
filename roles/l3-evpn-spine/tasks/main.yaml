@@ -12,7 +12,7 @@
 - name: Clean the slate and set up unnumbered BGP fabric and VNI advertisement
   nclu:
     commands:
-    - del all
+    #- del all
     - add bgp autonomous-system {{ myvars.ASN }}
     - add bgp router-id {{ myvars.LOOPBACK_V4 }}
     - add loopback lo ip address {{ myvars.LOOPBACK_V4 }}/32
