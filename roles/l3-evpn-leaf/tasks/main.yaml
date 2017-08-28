@@ -46,10 +46,10 @@
 
 # Server facing interfaces
 #
-- name: Access ports
-  nclu:
-    commands:
-    - add interface {{ TRUNK_PORTS }} bridge trunk vlans {{ VLANS | join(",") }}
-    atomic: true
-    description: access ports
+#- name: Access ports
+#  nclu:
+#    commands:
+#    - add interface {{ TRUNK_PORTS }} bridge trunk vlans {{ VLANS | join(",") }}
+#    atomic: true
+#    description: access ports
 ...
