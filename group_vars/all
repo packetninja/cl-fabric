@@ -42,6 +42,7 @@ switchvars:
   leaf01:
     LOOPBACK_V4: 10.0.0.11
     LOOPBACK_V6: fd00:0:0:1::11
+    ANYCAST: 10.100.100.1
     ASN: 65001
     PEERLINK_IP: 169.254.1.1
     PEERLINK_PEERIP: 169.254.1.2
@@ -50,6 +51,7 @@ switchvars:
   leaf02:
     LOOPBACK_V4: 10.0.0.12
     LOOPBACK_V6: fd00:0:0:1::12
+    ANYCAST: 10.100.100.2
     ASN: 65002
     PEERLINK_IP: 169.254.1.2
     PEERLINK_PEERIP: 169.254.1.1
@@ -58,6 +60,7 @@ switchvars:
   leaf03:
     LOOPBACK_V4: 10.0.0.13
     LOOPBACK_V6: fd00:0:0:1::13
+    ANYCAST: 10.100.100.3
     ASN: 65003
     PEERLINK_IP: 169.254.1.1
     PEERLINK_PEERIP: 169.254.1.2
@@ -66,6 +69,7 @@ switchvars:
   leaf04:
     LOOPBACK_V4: 10.0.0.14
     LOOPBACK_V6: fd00:0:0:1::14
+    ANYCAST: 10.100.100.4
     ASN: 65004
     PEERLINK_IP: 169.254.1.2
     PEERLINK_PEERIP: 169.254.1.1
@@ -115,7 +119,7 @@ accessvars:
     server01: 
       VLAN_ID: 120
     server02:
-      VLAN_ID: 130
+      VLAN_id: 130
 
   leaf02:
     server01: 
