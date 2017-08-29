@@ -66,7 +66,7 @@
     description: Bonds
     template: |
       {% for bond in bondvars[inventory_hostname] -%}
-      add clag port bond {{ bond }} interface {{ bondvars[bond].PORTS }} clag-id {{ bondvars[bond].CLAGID }}
+      add clag port bond {{ bond }} interface {{ bondvars[inventory_hostname][bond].PORTS }} clag-id {{ bondvars[inventory_hostname][bond].CLAGID }}
       {% endfor %}
 
 #- name: Access ports
