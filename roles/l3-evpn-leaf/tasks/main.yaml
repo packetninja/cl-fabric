@@ -53,6 +53,7 @@
     commands:
     - del all
     - add bond peerlink bond slaves swp49-50
+    - add bridge bridge ports peerlink
     - add interface peerlink.4094 ip address {{ generalvars.PEERLINK_IP }}/30 
     - add interface peerlink.4094 clag peer-ip  {{ generalvars.PEERLINK_PEERIP }}
     - add interface peerlink.4094 clag backup-ip  {{ generalvars.PEERLINK_BACKUPIP }}
