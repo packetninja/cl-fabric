@@ -97,7 +97,7 @@ bondvars:
       PORTS: 'swp2'
       CLAGID: 2
 
-  leaf01:
+  leaf03:
     server03:
       PORTS: 'swp1'
       CLAGID: 1
@@ -105,7 +105,7 @@ bondvars:
       PORTS: 'swp2'
       CLAGID: 2
    
-  leaf02:
+  leaf04:
     server03:
       PORTS: 'swp1'
       CLAGID: 1
