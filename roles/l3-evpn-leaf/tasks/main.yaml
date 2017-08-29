@@ -51,7 +51,6 @@
 - name: MLAG config
   nclu:
     commands:
-    - del bond peerlink
     - add bond peerlink bond slaves swp49-50
     - add bridge bridge ports peerlink
     - add interface peerlink.4094 ip address {{ generalvars.PEERLINK_IP }}/30 
