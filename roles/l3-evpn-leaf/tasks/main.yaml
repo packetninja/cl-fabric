@@ -7,8 +7,8 @@
 ---
 - set_fact:
     generalvars: "{{ switchvars[inventory_hostname] }}"
-    bondvars: "{{ bondvars[inventory_hostname] }}"
-    accessvars: "{{ accessvars[inventory_hostname]  }}"
+    #bondvars: "{{ bondvars[inventory_hostname] }}"
+    #accessvars: "{{ accessvars[inventory_hostname]  }}"
 
 # L3 fabric 
 #
@@ -65,7 +65,7 @@
     atomic: true
     description: Bonds
     template: |
-      {% for bond in bondvars -%}
+      {% for bond in bondvars[inventory_hostname] -%}
       add clag port bond {{ bond }} interface {{ bondvars[bond].PORTS }} clag-id {{ bondvars[bond].CLAGID }}
       {% endfor %}
 
