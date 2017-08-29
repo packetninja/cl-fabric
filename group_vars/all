@@ -9,7 +9,7 @@ TRUNK_PORTS:    'server01,server02,server03.server04'
 
 # Spine switch port definitions
 #
-AGG_PORTS: 	'swp1,swp2,swp3,swp4'
+AGG_PORTS:  'swp1,swp2,swp3,swp4'
 
 #
 # VLAN/VNI parameters
