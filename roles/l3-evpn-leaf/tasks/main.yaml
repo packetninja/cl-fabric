@@ -43,6 +43,37 @@
     description: VLANS and VTEPS
   with_items: "{{ VLANS }}"
 
+# MLAG config
+#
+- name: MLAG config
+  nclu:
+    commands:
+    - add bond peerlink bond slaves swp49-50
+    {% if switchvars[inventory_hostname] == 'leaf01' %}
+    - add interface peerlink.4094 ip address 169.254.1.1/30
+    - add interface peerlink.4094 clag peer-ip 169.254.1.2
+    - add interface peerlink.4094 clag backup-ip 192.168.0.12
+    {% endif %}
+    {% if switchvars[inventory_hostname] == 'leaf02' %}
+    - add interface peerlink.4094 ip address 169.254.1.2/30
+    - add interface peerlink.4094 clag peer-ip 169.254.1.1
+    - add interface peerlink.4094 clag backup-ip 192.168.0.13
+    {% endif %}
+    {% if switchvars[inventory_hostname] == 'leaf03' %}
+    - add interface peerlink.4094 ip address 169.254.1.1/30
+    - add interface peerlink.4094 clag peer-ip 169.254.1.2
+    - add interface peerlink.4094 clag backup-ip 192.168.0.14
+    {% endif %}
+    {% if switchvars[inventory_hostname] == 'leaf04' %}
+    - add interface peerlink.4094 ip address 169.254.1.2/30
+    - add interface peerlink.4094 clag peer-ip 169.254.1.1
+    - add interface peerlink.4094 clag backup-ip 192.168.0.13
+    {% endif %}
+    - add interface peerlink.4094 clag sys-mac 44:38:39:FF:40:94
+    atomic: true
+    description: MLAG peering 
+
+
 
 # Server facing interfaces
 #
