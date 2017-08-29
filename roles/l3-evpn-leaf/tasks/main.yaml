@@ -6,7 +6,9 @@
 #-------------------------------------------------------------------------------
 ---
 - set_fact:
-    myvars: "{{ switchvars[inventory_hostname] }}"
+    generalvars: "{{ switchvars[inventory_hostname] }}"
+    bondvars: "{{ bondvars[inventory_hostname] }}"
+    accessvars: "{{ accessvars[inventory_hostname]  }}"
 
 # L3 fabric 
 #
@@ -14,12 +16,12 @@
   nclu:
     commands:
     - del all
-    - add bgp autonomous-system {{ myvars.ASN }}
-    - add bgp router-id {{ myvars.LOOPBACK_V4 }}
-    - add loopback lo ip address {{ myvars.LOOPBACK_V4 }}/32
-    - add bgp ipv4 unicast network {{ myvars.LOOPBACK_V4 }}/32
-    - add loopback lo ipv6 address {{ myvars.LOOPBACK_V6 }}/128
-    - add bgp ipv6 unicast network {{ myvars.LOOPBACK_V6 }}/128
+    - add bgp autonomous-system {{ generalvars.ASN }}
+    - add bgp router-id {{ generalvars.LOOPBACK_V4 }}
+    - add loopback lo ip address {{ generalvars.LOOPBACK_V4 }}/32
+    - add bgp ipv4 unicast network {{ generalvars.LOOPBACK_V4 }}/32
+    - add loopback lo ipv6 address {{ generalvars.LOOPBACK_V6 }}/128
+    - add bgp ipv6 unicast network {{ generalvars.LOOPBACK_V6 }}/128
     - add interface {{ UPLINKS }} mtu 9216
     - add bgp neighbor {{ UPLINKS }} interface remote-as external 
     - add bgp ipv4 unicast neighbor {{ UPLINKS }} activate 
@@ -35,7 +37,7 @@
   nclu:
     commands:
     - add vxlan vtep{{ item }} vxlan id {{ item }}
-    - add vxlan vtep{{ item }} vxlan local-tunnelip {{ myvars.LOOPBACK_V4 }}
+    - add vxlan vtep{{ item }} vxlan local-tunnelip {{ generalvars.LOOPBACK_V4 }}
     - add vxlan vtep{{ item }} bridge access {{ item }}
     - add vxlan vtep{{ item }} bridge learning off
     - add vxlan vtep{{ item }} mtu 9216
@@ -49,19 +51,28 @@
   nclu:
     commands:
     - add bond peerlink bond slaves swp49-50
-    - add interface peerlink.4094 ip address {{ myvars.PEERLINK_IP }}/30 
-    - add interface peerlink.4094 clag peer-ip  {{ myvars.PEERLINK_PEERIP }}
-    - add interface peerlink.4094 clag backup-ip  {{ myvars.PEERLINK_BACKUPIP }}
+    - add interface peerlink.4094 ip address {{ generalvars.PEERLINK_IP }}/30 
+    - add interface peerlink.4094 clag peer-ip  {{ generalvars.PEERLINK_PEERIP }}
+    - add interface peerlink.4094 clag backup-ip  {{ generalvars.PEERLINK_BACKUPIP }}
     - add interface peerlink.4094 clag sys-mac 44:38:39:FF:40:94
     atomic: true
     description: MLAG peering 
 
 # Server facing interfaces
 #
+- name: Bonds
+  {% for bond in accessvars -%}
+  nclu:
+    commands:
+    - add clag port bond {{ bond }} interface {{ bond.ports }} clag-id {{ bond.CLAGID }}
+    atomic: true
+    description: Bonds
+  {% endfor %}
+
 #- name: Access ports
 #  nclu:
 #    commands:
-#    - add interface {{ TRUNK_PORTS }} bridge trunk vlans {{ VLANS | join(",") }}
+#    - net add bond {{ accessvars. }} bridge access {{ accessvars.  }} 
 #    atomic: true
 #    description: access ports
 ...

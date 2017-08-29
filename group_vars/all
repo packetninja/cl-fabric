@@ -70,3 +70,23 @@ switchvars:
     PEERLINK_IP: 169.254.1.2
     PEERLINK_PEERIP: 169.254.1.1
     PEERLINK_BACKUPIP: 192.168.0.13
+
+#
+# Access ports
+#
+
+bondvars:
+
+  leaf01:
+    server01:
+      PORTS: 'swp1'
+      CLAGID: 1
+    server02:
+      PORTS: 'swp2'
+      CLAGID: 2
+     
+accessvars:
+  
+  leaf01:
+    server01: 120
+    server02: 130
