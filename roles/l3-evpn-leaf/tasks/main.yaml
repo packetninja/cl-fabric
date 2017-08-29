@@ -19,7 +19,7 @@
     - add bgp autonomous-system {{ generalvars.ASN }}
     - add bgp router-id {{ generalvars.LOOPBACK_V4 }}
     - add loopback lo ip address {{ generalvars.LOOPBACK_V4 }}/32
-    - add loopback lo clag vxlan-anycast-ip {{ generalvars.ANYCAST }} /32
+    - add loopback lo clag vxlan-anycast-ip {{ generalvars.ANYCAST }}/32
     - add bgp ipv4 unicast network {{ generalvars.LOOPBACK_V4 }}/32
     - add loopback lo ipv6 address {{ generalvars.LOOPBACK_V6 }}/128
     - add bgp ipv6 unicast network {{ generalvars.LOOPBACK_V6 }}/128
