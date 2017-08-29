@@ -85,10 +85,52 @@ bondvars:
       PORTS: 'swp2'
       CLAGID: 2
      
+  leaf02:
+    server01:
+      PORTS: 'swp1'
+      CLAGID: 1
+    server02:
+      PORTS: 'swp2'
+      CLAGID: 2
+
+  leaf01:
+    server03:
+      PORTS: 'swp1'
+      CLAGID: 1
+    server04:
+      PORTS: 'swp2'
+      CLAGID: 2
+   
+  leaf02:
+    server03:
+      PORTS: 'swp1'
+      CLAGID: 1
+    server04:
+      PORTS: 'swp2'
+      CLAGID: 2
+
 accessvars:
   
   leaf01:
     server01: 
       VLAN_ID: 120
     server02:
+      VLAN_ID: 130
+
+  leaf02:
+    server01: 
+      VLAN_ID: 120
+    server02:
+      VLAN_ID: 130
+
+  leaf03:
+    server03: 
+      VLAN_ID: 120
+    server04:
+      VLAN_ID: 130
+
+  leaf04:
+    server03: 
+      VLAN_ID: 120
+    server04:
       VLAN_ID: 130
