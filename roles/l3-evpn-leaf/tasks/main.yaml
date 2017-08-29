@@ -20,12 +20,6 @@
     - add bgp router-id {{ generalvars.LOOPBACK_V4 }}
     - add loopback lo ip address {{ generalvars.LOOPBACK_V4 }}/32
     - add loopback lo clag vxlan-anycast-ip {{ generalvars.ANYCAST }}
-    - add bond peerlink bond slaves swp49-50
-    - add bridge bridge ports peerlink
-    - add interface peerlink.4094 ip address {{ generalvars.PEERLINK_IP }}/30 
-    - add interface peerlink.4094 clag peer-ip  {{ generalvars.PEERLINK_PEERIP }}
-    - add interface peerlink.4094 clag backup-ip  {{ generalvars.PEERLINK_BACKUPIP }}
-    - add interface peerlink.4094 clag sys-mac 44:38:39:FF:40:94
     - add bgp ipv4 unicast network {{ generalvars.LOOPBACK_V4 }}/32
     - add loopback lo ipv6 address {{ generalvars.LOOPBACK_V6 }}/128
     - add bgp ipv6 unicast network {{ generalvars.LOOPBACK_V6 }}/128
@@ -35,6 +29,12 @@
     - add bgp ipv6 unicast neighbor {{ UPLINKS }} activate 
     - add bgp evpn neighbor {{ UPLINKS }} activate
     - add bgp evpn advertise-all-vni
+    - add bond peerlink bond slaves swp49-50
+    - add bridge bridge ports peerlink
+    - add interface peerlink.4094 ip address {{ generalvars.PEERLINK_IP }}/30 
+    - add interface peerlink.4094 clag peer-ip  {{ generalvars.PEERLINK_PEERIP }}
+    - add interface peerlink.4094 clag backup-ip  {{ generalvars.PEERLINK_BACKUPIP }}
+    - add interface peerlink.4094 clag sys-mac 44:38:39:FF:40:94
     atomic: true
     description: l3-fabric
 
@@ -51,20 +51,6 @@
     commit: yes
     description: VLANS and VTEPS
   with_items: "{{ VLANS }}"
-
-# MLAG config
-#
-#- name: MLAG config
-#  nclu:
-#    commands:
-#    - add bond peerlink bond slaves swp49-50
-#    - add bridge bridge ports peerlink
-#    - add interface peerlink.4094 ip address {{ generalvars.PEERLINK_IP }}/30 
-#    - add interface peerlink.4094 clag peer-ip  {{ generalvars.PEERLINK_PEERIP }}
-#    - add interface peerlink.4094 clag backup-ip  {{ generalvars.PEERLINK_BACKUPIP }}
-#    - add interface peerlink.4094 clag sys-mac 44:38:39:FF:40:94
-#    atomic: true
-#    description: MLAG peering 
 
 # Server facing interfaces
 #
