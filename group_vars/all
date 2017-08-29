@@ -117,24 +117,24 @@ accessvars:
   
   leaf01:
     server01: 
-      VLAN_ID: 120
+      VLANID: 120
     server02:
-      VLAN_id: 130
+      VLANID: 130
 
   leaf02:
     server01: 
-      VLAN_ID: 120
+      VLANID: 120
     server02:
-      VLAN_ID: 130
+      VLANID: 130
 
   leaf03:
     server03: 
-      VLAN_ID: 120
+      VLANID: 120
     server04:
-      VLAN_ID: 130
+      VLANID: 130
 
   leaf04:
     server03: 
-      VLAN_ID: 120
+      VLANID: 120
     server04:
-      VLAN_ID: 130
+      VLANID: 130

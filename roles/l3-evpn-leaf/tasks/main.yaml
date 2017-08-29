@@ -71,13 +71,13 @@
       add clag port bond {{ bond }} interface {{ bondvars[inventory_hostname][bond].PORTS }} clag-id {{ bondvars[inventory_hostname][bond].CLAGID }}
       {% endfor %}
 
-- name: Access ports
+- name: Accessports
   nclu:
     atomic: true
-    description: access ports
+    description: accessports
     template: |
       {% for port in accessvars[inventory_hostname] -%}
-      add bond {{ port }} bridge access {{ accessvars[inventory_hostname][port].VLAN_ID }}
+      add bond {{ port }} bridge access {{ accessvars[inventory_hostname][port].VLANID }}
       add bond {{ port }} stp portadminedge
       add bond {{ port }} stp bpduguard
       {% endfor %}
