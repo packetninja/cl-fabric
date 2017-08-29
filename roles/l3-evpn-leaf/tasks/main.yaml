@@ -77,7 +77,7 @@
     description: access ports
     template: |
       {% for port in accessvars[inventory_hostname] -%}
-      add bond {{ port }} bridge access {{ accessvars[inventory_hostname].VLAN_ID }}
+      add bond {{ port }} bridge access {{ accessvars[inventory_hostname][port].VLAN_ID }}
       add bond {{ port }} stp portadminedge
       add bond {{ port }} stp bpduguard
       {% endfor %}
