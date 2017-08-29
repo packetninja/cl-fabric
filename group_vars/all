@@ -88,5 +88,7 @@ bondvars:
 accessvars:
   
   leaf01:
-    server01: 120
-    server02: 130
+    server01: 
+      VLAN_ID: 120
+    server02:
+      VLAN_ID: 130
