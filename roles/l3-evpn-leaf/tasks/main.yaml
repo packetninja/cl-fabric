@@ -65,7 +65,7 @@
     atomic: true
     description: Bonds
     template: |
-      {% for bond in accessvars -%}
+      {% for bond in bondvars -%}
       add clag port bond {{ bond }} interface {{ bond.PORTS }} clag-id {{ bond.CLAGID }}
       {% endfor %}
 
