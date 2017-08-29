@@ -29,6 +29,8 @@
     - add bgp ipv6 unicast neighbor {{ UPLINKS }} activate 
     - add bgp evpn neighbor {{ UPLINKS }} activate
     - add bgp evpn advertise-all-vni
+    - del interface peerlink
+    - del interface swp49-50
     - add bond peerlink bond slaves swp49-50
     - add bridge bridge ports peerlink
     - add interface peerlink.4094 ip address {{ generalvars.PEERLINK_IP }}/30 
