@@ -61,13 +61,13 @@
 # Server facing interfaces
 #
 - name: Bonds
-  {% for bond in accessvars -%}
   nclu:
-    commands:
-    - add clag port bond {{ bond }} interface {{ bond.ports }} clag-id {{ bond.CLAGID }}
     atomic: true
     description: Bonds
-  {% endfor %}
+    template: |
+    {% for bond in accessvars -%}
+    - add clag port bond {{ bond }} interface {{ bond.ports }} clag-id {{ bond.CLAGID }}
+    {% endfor %}
 
 #- name: Access ports
 #  nclu:
