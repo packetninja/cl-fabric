@@ -1,0 +1,15 @@
+---
+- hosts: spines
+  gather_facts: no
+  become: true
+  roles:
+  - setup
+  - spine
+
+- hosts: leafs
+  gather_facts: no
+  become: true 
+  roles:
+  - setup
+  - leaf
+...

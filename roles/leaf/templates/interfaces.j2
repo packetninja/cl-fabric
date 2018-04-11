@@ -1,0 +1,88 @@
+# The loopback network interface
+auto lo
+iface lo inet loopback
+   address {{node[inventory_hostname]["lo"]}}
+{% if node[inventory_hostname]["overlay"]["anycast-ip"] is defined %}
+   clagd-vxlan-anycast-ip {{ node[inventory_hostname]["overlay"]["anycast-ip"] }}
+{% endif %}
+
+auto eth0
+iface eth0 inet dhcp
+ vrf mgmt
+
+auto mgmt
+iface mgmt
+  address 127.0.0.1/8
+  vrf-table auto
+
+{% for interface in node[inventory_hostname]["bgp"]["peers"] -%}
+auto {{interface}}
+iface {{interface}}
+   mtu 9216
+{% endfor %}
+
+{% if node[inventory_hostname]["mlag"] is defined %}
+auto peerlink
+iface peerlink
+  bond-slaves {{ node[inventory_hostname]["mlag"]["members"] | join(" ") }} 
+  mtu 9216
+ 
+auto peerlink.4094
+iface peerlink.4094
+  address {{ node[inventory_hostname]["mlag"]["address"] }}
+  clagd-peer-ip {{ node[inventory_hostname]["mlag"]["peer-ip"] }}
+  clagd-backup-ip {{ node[inventory_hostname]["mlag"]["backup-ip"] }}
+  clagd-sys-mac {{ node[inventory_hostname]["mlag"]["sysmac"] }}
+{% endif %}
+
+auto bridge
+iface bridge
+  bridge-vlan-aware yes
+  bridge-ports {{ node[inventory_hostname]["ports"] | join(" ") }} regex vni.* peerlink
+  bridge-vids {{ node[inventory_hostname]["overlay"]["l2domains"] | join(" ") }} 
+
+{% if node[inventory_hostname]["overlay"] is defined %}
+{% for l2domain in node[inventory_hostname]["overlay"]["l2domains"] -%}
+auto vni10{{l2domain}}
+iface vni10{{l2domain}}
+  mtu 9000
+  vxlan-id 10{{l2domain}} 
+  vxlan-local-tunnelip {{ node[inventory_hostname]["overlay"]["anycast-ip"] }} 
+  bridge-access {{l2domain}}
+  bridge-learning off
+  mstpctl-bpduguard yes
+  mstpctl-portbpdufilter yes
+  bridge-arp-nd-suppress on
+{% endfor %}
+{% endif %}
+
+
+{% if node[inventory_hostname]["ports"] is defined %}
+{% for port in node[inventory_hostname]["ports"] -%}
+
+{% if node[inventory_hostname]["ports"][port]["mlag"] %}
+{% for member in node[inventory_hostname]["ports"][port]["members"] -%}
+auto {{member}}
+iface {{member}}
+{% endfor %}
+{% endif %}
+
+auto {{port}}
+iface {{port}}
+  mtu 9000
+  {% if node[inventory_hostname]["ports"][port]["alias"] is defined %}
+  alias {{ node[inventory_hostname]["ports"][port]["alias"] }}
+  {% endif %}
+  {% if node[inventory_hostname]["ports"][port]["mlag"] %}
+  clag-id {{ node[inventory_hostname]["ports"][port]["mlag-id"] }}
+  bond-slaves {{ node[inventory_hostname]["ports"][port]["members"] | join(" ") }}
+  mstpctl-bpduguard yes
+  mstpctl-portadminedge yes
+  {% endif %}
+  {% if node[inventory_hostname]["ports"][port]["trunk"] %}
+  bridge-vids {{ node[inventory_hostname]["ports"][port]["vlans"] | join(" ") }}
+  {% else %}
+  bridge-access {{ node[inventory_hostname]["ports"][port]["vlan"] }}
+  {% endif %}
+{% endfor %} 
+{% endif %}
