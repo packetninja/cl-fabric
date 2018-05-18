@@ -1,7 +1,7 @@
 ---
-  - name: ntp daemon state
-    shell: systemctl status ntp@mgmt
-    register: ntp_daemon_state
+#  - name: ntp daemon state
+#    shell: systemctl status ntp@mgmt
+#    register: ntp_daemon_state
 
   - name: Configured NTP in management VRF
     command: "{{item}}"
@@ -10,8 +10,8 @@
       - systemctl disable ntp.service
       - systemctl enable ntp@mgmt
       - systemctl start ntp@mgmt
-    when:
-      - ntp_daemon_state.stdout.find('active (running)') == -1
+#    when:
+#      - ntp_daemon_state.stdout.find('active (running)') == -1
 
   - name: NetQ config
     shell: netq config show server
@@ -28,7 +28,7 @@
       - netq_config.stdout.find('mgmt') == -1
 
   - name: Enable NetQ stats
-    command: netq config add stats
+    command: netq config add agent stats
     when:
       - netq_stats_config.stdout.find('stats') == -1
 

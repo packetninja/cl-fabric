@@ -13,7 +13,7 @@ iface mgmt
   address 127.0.0.1/8
   vrf-table auto
 
-{% for interface in node[inventory_hostname]["bgp"]["peers"] -%}
+{% for interface in node[inventory_hostname]["routing"]["bgp"]["underlay"]["peers"] -%}
 auto {{interface}}
 iface {{interface}}
    mtu 9216
